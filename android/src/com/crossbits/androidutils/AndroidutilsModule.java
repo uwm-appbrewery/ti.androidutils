@@ -25,16 +25,16 @@ public class AndroidutilsModule extends KrollModule
 
 	// Standard Debugging variables
 	private static final String LCAT = "AndroidutilsModule";
-	
+
 	@Kroll.constant
 	public static final int RINGER_MODE_SILENT = AudioManager.RINGER_MODE_SILENT;
 
 	@Kroll.constant
 	public static final int RINGER_MODE_VIBRATE = AudioManager.RINGER_MODE_VIBRATE;
-	
+
 	@Kroll.constant
 	public static final int RINGER_MODE_NORMAL = AudioManager.RINGER_MODE_NORMAL;
-	
+
 	// You can define constants with @Kroll.constant, for example:
 	// @Kroll.constant public static final String EXTERNAL_NAME = value;
 
@@ -56,7 +56,7 @@ public class AndroidutilsModule extends KrollModule
 	{
 		Activity activity = TiApplication.getAppRootOrCurrentActivity();
 		AudioManager am = (AudioManager)activity.getSystemService(Context.AUDIO_SERVICE);
-		
+
 		if(am.getRingerMode() == AudioManager.RINGER_MODE_SILENT) {
 			return true;
 		}
@@ -64,13 +64,13 @@ public class AndroidutilsModule extends KrollModule
 			return false;
 		}
 	}
-	
+
 	@Kroll.method
 	public boolean isRingerModeVibrate()
 	{
 		Activity activity = TiApplication.getAppRootOrCurrentActivity();
 		AudioManager am = (AudioManager)activity.getSystemService(Context.AUDIO_SERVICE);
-		
+
 		if(am.getRingerMode() == AudioManager.RINGER_MODE_VIBRATE) {
 			return true;
 		}
@@ -78,13 +78,13 @@ public class AndroidutilsModule extends KrollModule
 			return false;
 		}
 	}
-	
+
 	@Kroll.method
 	public boolean isRingerModeNormal()
 	{
 		Activity activity = TiApplication.getAppRootOrCurrentActivity();
 		AudioManager am = (AudioManager)activity.getSystemService(Context.AUDIO_SERVICE);
-		
+
 		if(am.getRingerMode() == AudioManager.RINGER_MODE_NORMAL) {
 			return true;
 		}
@@ -92,32 +92,32 @@ public class AndroidutilsModule extends KrollModule
 			return false;
 		}
 	}
-	
+
 	@Kroll.method
 	public int getRingerMode()
 	{
 		Activity activity = TiApplication.getAppRootOrCurrentActivity();
 		AudioManager am = (AudioManager)activity.getSystemService(Context.AUDIO_SERVICE);
-		
+
 		int ringerMode = -1;
-		
+
 		switch (am.getRingerMode()) {
 			case AudioManager.RINGER_MODE_SILENT:
 				ringerMode = RINGER_MODE_SILENT;
 				break;
-				
+
 			case AudioManager.RINGER_MODE_VIBRATE:
 				ringerMode = RINGER_MODE_VIBRATE;
 				break;
-				
+
 			case AudioManager.RINGER_MODE_NORMAL:
 				ringerMode = RINGER_MODE_NORMAL;
 				break;
 		}
-		
+
 		return ringerMode;
-	}	
-	
+	}
+
 	@Kroll.method
 	public String getSimCountryIso()
 	{
@@ -128,5 +128,32 @@ public class AndroidutilsModule extends KrollModule
 		return simCountryIso;
 	}
 
-}
+	@Kroll.method
+	public boolean isWiredHeadsetOn()
+	{
+		Activity activity = TiApplication.getAppRootOrCurrentActivity();
+		AudioManager am = (AudioManager)activity.getSystemService(Context.AUDIO_SERVICE);
 
+		if(am.isWiredHeadsetOn()) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Kroll.method
+	public boolean isBluetoothA2dpOn()
+	{
+		Activity activity = TiApplication.getAppRootOrCurrentActivity();
+		AudioManager am = (AudioManager)activity.getSystemService(Context.AUDIO_SERVICE);
+
+		if(am.isBluetoothA2dpOn()) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+}
