@@ -1,8 +1,9 @@
 version: 1.1.0
 apiversion: 2
+architectures: armeabi armeabi-v7a x86
 description: androidutils
 author: Joel Herron  
-license: Specify your license
+license: Apache Software License 2.0
 copyright: Copyright (c) 2014 by UWM App Brewery
 
 # these should not be edited
@@ -10,4 +11,4 @@ name: androidutils
 moduleid: com.crossbits.androidutils
 guid: a59fbe41-db00-41e7-83e8-31744f59539f
 platform: android
-minsdk: 3.4.0.GA
+minsdk: 4.0.0.GA

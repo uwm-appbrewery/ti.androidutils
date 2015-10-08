@@ -8,15 +8,16 @@
  */
 package com.crossbits.androidutils;
 
+import android.app.Activity;
+import android.content.Context;
+import android.media.AudioManager;
+import android.telephony.TelephonyManager;
 import org.appcelerator.kroll.KrollModule;
 import org.appcelerator.kroll.annotations.Kroll;
 import org.appcelerator.titanium.TiApplication;
 import org.appcelerator.kroll.common.Log;
 
-import android.app.Activity;
-import android.content.Context;
-import android.media.AudioManager;
-import android.telephony.TelephonyManager;
+
 
 
 @Kroll.module(name="Androidutils", id="com.crossbits.androidutils")
@@ -24,7 +25,7 @@ public class AndroidutilsModule extends KrollModule
 {
 
 	// Standard Debugging variables
-	private static final String LCAT = "AndroidutilsModule";
+	private static final String TAG = "AndroidutilsModule";
 
 	@Kroll.constant
 	public static final int RINGER_MODE_SILENT = AudioManager.RINGER_MODE_SILENT;
@@ -46,7 +47,7 @@ public class AndroidutilsModule extends KrollModule
 	@Kroll.onAppCreate
 	public static void onAppCreate(TiApplication app)
 	{
-		Log.d(LCAT, "inside onAppCreate");
+		Log.d(TAG, "inside onAppCreate");
 		// put module init code that needs to run when the application is created
 	}
 
@@ -124,7 +125,7 @@ public class AndroidutilsModule extends KrollModule
 		Activity activity = TiApplication.getAppRootOrCurrentActivity();
 		TelephonyManager tm = (TelephonyManager) activity.getSystemService(Context.TELEPHONY_SERVICE);
 		String simCountryIso = tm.getSimCountryIso().toUpperCase();
-		Log.d(LCAT, "simCountryIso: " + simCountryIso);
+		Log.d(TAG, "simCountryIso: " + simCountryIso);
 		return simCountryIso;
 	}
 
